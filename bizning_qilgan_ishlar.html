@@ -77,73 +77,18 @@
             overflow: hidden;
         }
 
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
         .video-wrapper video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .video-controls {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-
-        .video-wrapper:hover .video-controls {
-            opacity: 1;
-        }
-
-        .video-wrapper.playing .video-controls {
-            opacity: 0;
-        }
-
-        .play-button {
-            width: 80px;
-            height: 80px;
-            background: rgba(91, 95, 232, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            cursor: pointer;
-        }
-
-        .play-button:hover {
-            transform: scale(1.1);
-            background: rgba(91, 95, 232, 1);
-        }
-
-        .play-button::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-left: 25px solid white;
-            border-top: 15px solid transparent;
-            border-bottom: 15px solid transparent;
-            margin-left: 5px;
-        }
-
-        .play-button.pause-button::after {
-            content: '';
-            width: 6px;
-            height: 24px;
-            background: white;
-            border: none;
-            margin: 0;
-            box-shadow: 12px 0 0 white;
         }
 
         .video-info {
@@ -319,16 +264,10 @@
         </header>
 
         <div class="portfolio-grid">
-            <!-- Video Card 1 -->
+            <!-- Video Card 1 - YouTube Example -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="1">
-                    <video loop muted playsinline>
-                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534239-1.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/288719918-224388588-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Brending va Dizayn Loyihasi</h3>
@@ -336,16 +275,12 @@
                 </div>
             </div>
 
-            <!-- Video Card 2 -->
+            
+
+            <!-- Video Card 2 - YouTube Shorts -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="2">
-                    <video loop muted playsinline>
-                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534239-1.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534195-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Marketing Kampaniyasi</h3>
@@ -353,16 +288,12 @@
                 </div>
             </div>
 
-            <!-- Video Card 3 -->
+            <!-- Video Card 3 - Direct MP4 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="3">
-                    <video loop muted playsinline>
-                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534239-1.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
+                <div class="video-wrapper">
+                    <video controls loop playsinline>
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534084-1.mp4" type="video/mp4">
                     </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Mahsulot Tanituvi</h3>
@@ -372,14 +303,8 @@
 
             <!-- Video Card 4 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="4">
-                    <video loop muted playsinline>
-                        <source src="video4.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534239-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Corporate Video</h3>
@@ -389,14 +314,8 @@
 
             <!-- Video Card 5 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="5">
-                    <video loop muted playsinline>
-                        <source src="video5.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/8002338152-104439086-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Event Coverage</h3>
@@ -406,14 +325,8 @@
 
             <!-- Video Card 6 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="6">
-                    <video loop muted playsinline>
-                        <source src="video6.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/7765847314-7779651-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Animatsiya Loyiha</h3>
@@ -423,14 +336,8 @@
 
             <!-- Video Card 7 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="7">
-                    <video loop muted playsinline>
-                        <source src="video7.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534162-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Lifestyle Content</h3>
@@ -440,14 +347,8 @@
 
             <!-- Video Card 8 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="8">
-                    <video loop muted playsinline>
-                        <source src="video8.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/5582332301-225638641-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Fashion Videography</h3>
@@ -457,14 +358,8 @@
 
             <!-- Video Card 9 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="9">
-                    <video loop muted playsinline>
-                        <source src="video9.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244533959-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Educational Content</h3>
@@ -474,14 +369,8 @@
 
             <!-- Video Card 10 -->
             <div class="video-card">
-                <div class="video-wrapper" data-video="10">
-                    <video loop muted playsinline>
-                        <source src="video10.mp4" type="video/mp4">
-                        Brauzeringiz video formatini qo'llab-quvvatlamaydi.
-                    </video>
-                    <div class="video-controls">
-                        <div class="play-button"></div>
-                    </div>
+                <div class="video-wrapper">
+                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/612054281-59417888-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <h3 class="video-title">Special Effects</h3>
@@ -515,31 +404,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Video play/pause functionality
-        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-            const video = wrapper.querySelector('video');
-            const controls = wrapper.querySelector('.video-controls');
-            const playButton = wrapper.querySelector('.play-button');
-
-            controls.addEventListener('click', () => {
-                if (video.paused) {
-                    video.play();
-                    wrapper.classList.add('playing');
-                    playButton.classList.add('pause-button');
-                } else {
-                    video.pause();
-                    wrapper.classList.remove('playing');
-                    playButton.classList.remove('pause-button');
-                }
-            });
-
-            video.addEventListener('ended', () => {
-                wrapper.classList.remove('playing');
-                playButton.classList.remove('pause-button');
-            });
-        });
-    </script>
 </body>
 </html>
