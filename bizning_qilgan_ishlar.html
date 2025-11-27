@@ -75,6 +75,7 @@
             aspect-ratio: 9/16;
             background: #000;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .video-wrapper iframe {
@@ -82,6 +83,7 @@
             height: 100%;
             border: none;
             display: block;
+            pointer-events: none;
         }
 
         .video-wrapper video {
@@ -89,6 +91,18 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        .video-wrapper video::-webkit-media-controls {
+            display: flex !important;
+        }
+
+        .video-wrapper video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+        .video-wrapper video::-webkit-media-controls-overflow-button {
+            display: none !important;
         }
 
         .video-info {
@@ -259,122 +273,138 @@
 <body>
     <div class="container">
         <header>
-            <h1>Bizning Ishlarimiz</h1>
-            <p class="subtitle">Professional Instagram Reels Portfolio</p>
+            <h1>Bizning ishlarimiz</h1>
+            <p class="subtitle">Biz muvaffaqiyatli loyihalar namunalari va boshqalar</p>
         </header>
 
         <div class="portfolio-grid">
-            <!-- Video Card 1 - YouTube Example -->
+            <!-- Video Card 1 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/288719918-224388588-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/288719918-224388588-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Brending va Dizayn Loyihasi</h3>
-                    <p class="video-description">Zamonaviy brendlar uchun professional video ishlov berish</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">tabiiy toshlardan tayyorlangan zamonaviy gilamlar.</p>
                 </div>
             </div>
 
-            
-
-            <!-- Video Card 2 - YouTube Shorts -->
+            <!-- Video Card 2 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534195-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534195-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Marketing Kampaniyasi</h3>
-                    <p class="video-description">Social media uchun kreativ video kontent yaratish</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">chidamli va zamonaviy tosh gilam o‘rnatish xizmati. Professional jamoa, sifat kafolati.</p>
                 </div>
             </div>
 
-            <!-- Video Card 3 - Direct MP4 -->
+            <!-- Video Card 3 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <video controls loop playsinline>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
                         <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534084-1.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Mahsulot Tanituvi</h3>
-                    <p class="video-description">Premium mahsulotlar uchun reklama videolari</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Uy va hovlilaringizga yangi ko‘rinish qo‘shing.</p>
                 </div>
             </div>
 
             <!-- Video Card 4 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534239-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534239-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Corporate Video</h3>
-                    <p class="video-description">Kompaniya taqdimoti va korporativ ishlar</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Tosh gilam bilan zamonaviy, toza va mustahkam yer qoplamasini yarating. Uzoq xizmat qiladi.</p>
                 </div>
             </div>
 
             <!-- Video Card 5 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/8002338152-104439086-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/8002338152-104439086-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Event Coverage</h3>
-                    <p class="video-description">Tadbirlar va maxsus voqealar videoyorituvi</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Hovli, yo‘lak, balkon va teraslar uchun eng yaxshi yechim: Toshgilam. Estetika va mustahkamlik bir joyda.</p>
                 </div>
             </div>
 
             <!-- Video Card 6 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/7765847314-7779651-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/7765847314-7779651-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Animatsiya Loyiha</h3>
-                    <p class="video-description">Motion graphics va 2D/3D animatsiyalar</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Ushbu tosh gilam qoplamasi namlikka, issiqqa va sovuqqa chidamli. Uyingizga zamonaviy tus qo‘shing.</p>
                 </div>
             </div>
 
             <!-- Video Card 7 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534162-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244534162-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Lifestyle Content</h3>
-                    <p class="video-description">Hayot tarzi va turizm yo'nalishidagi videolar</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Tez, toza va sifatli o‘rnatiladigan tosh gilam qoplamalari. Har bir loyiha uchun individual yondashuv.</p>
                 </div>
             </div>
 
             <!-- Video Card 8 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/5582332301-225638641-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/5582332301-225638641-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Fashion Videography</h3>
-                    <p class="video-description">Moda va stilga oid professional suratga olish</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Toshgilam: har qanday maydonga mos tushadigan mustahkam qoplama. Qulay narx, yuqori sifat.</p>
                 </div>
             </div>
 
             <!-- Video Card 9 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244533959-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/6753945592-244533959-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Educational Content</h3>
-                    <p class="video-description">Ta'lim va o'quv videolar ishlab chiqish</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Zamonaviy dizayn va tabiiy materiallar uyg‘unligi. Tosh gilam bilan hovlingizni yangilang.</p>
                 </div>
             </div>
 
             <!-- Video Card 10 -->
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://ik.imagekit.io/kwnpz8tu8/videos/612054281-59417888-1.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <video controls preload="metadata" controlsList="nodownload nofullscreen noremoteplayback">
+                        <source src="https://ik.imagekit.io/kwnpz8tu8/videos/612054281-59417888-1.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3 class="video-title">Special Effects</h3>
-                    <p class="video-description">Maxsus effektlar va kinematik video ishlab chiqish</p>
+                    <h3 class="video-title">Toshgilam</h3>
+                    <p class="video-description">Barcha mavsumlar uchun mos tosh gilam qoplamasi. Qoplama uzoq muddat xizmat qiladi va ko‘rinishi a’lo.</p>
                 </div>
             </div>
         </div>
@@ -404,5 +434,78 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // F12 va sichqoncha o'ng tugmasini bloklash
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'VIDEO' || e.target.closest('.video-wrapper')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // F12 va Developer Tools klavishlarini bloklash
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+J
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+C
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Video maydoniga click orqali play/pause
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            
+            videoWrappers.forEach(function(wrapper) {
+                const video = wrapper.querySelector('video');
+                
+                // Video maydoniga bosilganda play/pause
+                wrapper.addEventListener('click', function(e) {
+                    // Agar controls ustiga bosilmagan bo'lsa
+                    if (e.target === wrapper || e.target === video) {
+                        if (video.paused) {
+                            video.play();
+                        } else {
+                            video.pause();
+                        }
+                    }
+                });
+                
+                // Sahifa yuklanganida videoni to'xtatish
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+
+        // Sahifa yopilganda barcha video holatlarini tozalash
+        window.addEventListener('beforeunload', function() {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(function(video) {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+    </script>
 </body>
 </html>
