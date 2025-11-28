@@ -300,6 +300,20 @@
             left: 0;
             z-index: 1;
         }
+
+        #part2 .carousel-logo {
+        width: 180px;                    /* Logo kengligi 180 piksel */
+        height: 180px;                   /* Logo balandligi 180 piksel */
+        margin-bottom: 32px;             /* Pastdan 32px bo'sh joy (TOSH GILAM yozuvidan ajratish uchun) */
+        filter: drop-shadow(0 8px 30px rgba(0,0,0,0.6));  /* Logo atrofida qora soya effekti */
+        animation: fadeInDown 1s ease-out;  /* Yuqoridan pastga fade-in animatsiya (1 soniya) */
+        transition: transform 0.3s ease;    /* Hover effekt uchun yumshoq o'tish */
+        }
+
+        #part2 .carousel-logo:hover {
+            transform: scale(1.05);          /* Sichqoncha ustiga kelganda 5% kattalashadi */
+        }
+
         #part2 .carousel-image {
             position: absolute;
             width: 100%;
@@ -346,7 +360,7 @@
             text-transform: uppercase;
             margin-bottom: 30px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            animation: fadeInDown 0.8s ease-out;
+            animation: fadeInDown 1s ease-out 0.2s both;  /* ← BU O'ZGARDI! */
         }
         #part2 .carousel-subtitle {
             font-size: 1.2rem;
@@ -1189,25 +1203,15 @@
                 gap: 40px;
             }
         }
+
         @media (max-width: 968px) {
-            #part2 .carousel-title {
-                font-size: 2.5rem;
-            }
-            #part2 .carousel-subtitle {
-                font-size: 1rem;
-                padding: 0 20px;
-            }
-            #part2 .carousel-buttons {
-                flex-direction: column;
-                gap: 15px;
-                width: 80%;
-            }
-            #part2 .btn {
-                width: 100%;
-                padding: 14px 30px;
-                font-size: 1rem;
-            }
+            .carousel-logo { width: 140px; height: 140px; margin-bottom: 24px; }  /* ← YANGI! */
+            .carousel-title { font-size: 3rem; letter-spacing: 2px; }
+            .carousel-subtitle { font-size: 1.1rem; }
+            .carousel-buttons { flex-direction: column; width: 80%; }
+            .btn { width: 100%; padding: 16px; }
         }
+
         @media (max-width: 768px) {
             #part2 .section-header h2 {
                 font-size: 2rem;
@@ -1225,6 +1229,7 @@
             }
         }
         @media (max-width: 640px) {
+            .carousel-logo { width: 110px; height: 110px; margin-bottom: 20px; }  /* ← YANGI! */
             #part2 .section-header h2 {
                 font-size: 2rem;
             }
@@ -1290,7 +1295,6 @@
                         <a href="mahsulotlar.html">Mahsulotlar</a>
                         <a href="bizhaqimizda.html">Biz haqimizda</a>
                         <a href="galereya.html">Galereya</a>
-                        <a href="kalcul.html">Kalkulyator</a>
                         <a href="aloqa.html">Aloqa</a>
                         <a href="bizning_qilgan_ishlar.html">Biz qilgan ishlar</a>
                         <a href="order.html">Buyurtma berish</a>
@@ -1305,7 +1309,6 @@
                 <a href="mahsulotlar.html">Mahsulotlar</a>
                 <a href="bizhaqimizda.html">Biz haqimizda</a>
                 <a href="galereya.html">Galereya</a>
-                <a href="kalcul.html">Kalkulyator</a>
                 <a href="aloqa.html">Aloqa</a>
                 <a href="bizning_qilgan_ishlar.html">Biz qilgan ishlar</a>
                 <a href="order.html">Buyurtma berish</a>
@@ -1348,9 +1351,11 @@
                     <img src="cimg/05.webp" alt="Tosh Gilam 4">
                 </div>
             </div>
+
             <div class="carousel-overlay"></div>
             <div class="carousel-content">
-                <h1 class="carousel-title">TOSH GILAM</h1>
+                <img src="cimg/logo.png" alt="Tosh Gilam Logo" class="carousel-logo">  <!-- ← YANGI QATOR! -->
+                <!-- <h1 class="carousel-title">TOSH GILAM</h1> -->
                 <p class="carousel-subtitle">Eng sifatli tosh gilam mahsulotlari siz uchun</p>
                 <div class="carousel-buttons">
                     <a href="mahsulotlar.html"><button class="btn btn-secondary">Mahsulotlar</button></a>
