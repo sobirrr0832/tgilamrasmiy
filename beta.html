@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="cimg/logo.png" type="image/x-icon">
     <title>Toshgilam - Zamonaviy Tosh Gilamlar</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Umumiy CSS (root, body, animations, responsive va kontent CSSlari) */
         * {
             margin: 0;
             padding: 0;
@@ -30,10 +30,261 @@
             background: #ffffff;
             color: var(--dark);
             overflow-x: hidden;
-            padding-top: 149px; /* Header balandligi */
+            padding-top: 60px;
         }
-        html { scroll-behavior: smooth; }
-        /* Carousel CSS */
+        /* Navigation - Header CSS */
+        #part1 .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+        }
+        #part1 .navbar-wrapper.hidden {
+            transform: translateY(-100%);
+        }
+        #part1 .navbar-wrapper.menu-open #part1 .bottom-navbar {
+            display: none;
+        }
+        #part1 .top-navbar {
+            background: white;
+            padding: 12px 0;
+        }
+        #part1 .top-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+        #part1 .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-shrink: 0;
+        }
+        #part1 .logo {
+            display: block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            line-height: 0;
+        }
+        #part1 .logo img {
+            height: 70px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+        #part1 .logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        #part1 .logo:active {
+            transform: scale(0.98);
+        }
+        #part1 .contact-info {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        #part1 .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        #part1 .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        #part1 .contact-item:hover {
+            transform: translateY(-2px);
+            color: var(--primary);
+        }
+        #part1 .contact-item span {
+            font-weight: 500;
+        }
+        #part1 .phone-number {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        #part1 .bottom-navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+        }
+        #part1 .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+        #part1 .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            justify-content: center;
+        }
+        #part1 .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 10px 0;
+        }
+        #part1 .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: white;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+        #part1 .nav-links a:hover {
+            color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+        #part1 .nav-links a:hover::after {
+            width: 100%;
+        }
+        #part1 .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        #part1 .mobile-menu-btn span {
+            width: 28px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #part1 .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        #part1 .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        #part1 .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+        #part1 .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), visibility 0.4s ease;
+            z-index: 999;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 4px 0 20px rgba(15, 23, 42, 0.08);
+        }
+        #part1 .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        #part1 .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
+            max-width: 300px;
+        }
+        #part1 .mobile-menu-links a {
+            text-align: center;
+            padding: 0;
+        }
+        #part1 .mobile-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 20px;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid var(--border);
+        }
+        #part1 .mobile-contact-info .contact-item {
+            justify-content: flex-start;
+            font-size: 1rem;
+            color: var(--dark);
+            gap: 12px;
+        }
+        #part1 .mobile-contact-info .contact-item i {
+            color: var(--primary);
+            flex-shrink: 0;
+            width: 20px;
+            text-align: center;
+        }
+        #part1 .mobile-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        #part1 .mobile-menu.active a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(1) { transition-delay: 0.1s; }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(2) { transition-delay: 0.15s; }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(3) { transition-delay: 0.2s; }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(4) { transition-delay: 0.25s; }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(5) { transition-delay: 0.3s; }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(6) { transition-delay: 0.35s; }
+        #part1 .mobile-menu.active .mobile-menu-links a:nth-child(7) { transition-delay: 0.4s; }
+        #part1 .mobile-menu.active .mobile-contact-info {
+            animation: fadeInUp 0.5s ease 0.5s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        #part1 .mobile-menu a:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+        /* Carousel Section */
         #part2 .carousel-container {
             position: relative;
             width: 100vw;
@@ -49,6 +300,20 @@
             left: 0;
             z-index: 1;
         }
+
+        #part2 .carousel-logo {
+        width: 180px;                    /* Logo kengligi 180 piksel */
+        height: 180px;                   /* Logo balandligi 180 piksel */
+        margin-bottom: 32px;             /* Pastdan 32px bo'sh joy (TOSH GILAM yozuvidan ajratish uchun) */
+        filter: drop-shadow(0 8px 30px rgba(0,0,0,0.6));  /* Logo atrofida qora soya effekti */
+        animation: fadeInDown 1s ease-out;  /* Yuqoridan pastga fade-in animatsiya (1 soniya) */
+        transition: transform 0.3s ease;    /* Hover effekt uchun yumshoq o'tish */
+        }
+
+        #part2 .carousel-logo:hover {
+            transform: scale(1.05);          /* Sichqoncha ustiga kelganda 5% kattalashadi */
+        }
+
         #part2 .carousel-image {
             position: absolute;
             width: 100%;
@@ -95,7 +360,7 @@
             text-transform: uppercase;
             margin-bottom: 30px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            animation: fadeInDown 0.8s ease-out;
+            animation: fadeInDown 1s ease-out 0.2s both;  /* ← BU O'ZGARDI! */
         }
         #part2 .carousel-subtitle {
             font-size: 1.2rem;
@@ -177,65 +442,95 @@
         #part2 .dot:hover {
             background: rgba(255, 255, 255, 0.8);
         }
-        /* Scrolling Gallery CSS */
-        #part3 .scrolling-gallery {
+         /* --- Scrolling Gallery --- */
+        .scrolling-gallery {
             padding: 100px 0;
             background: white;
             overflow: hidden;
         }
-        #part3 .gallery-header {
+
+        .gallery-header {
             max-width: 1400px;
             margin: 0 auto 60px;
             padding: 0 40px;
             text-align: center;
         }
-        #part3 .gallery-header h2 {
+
+        .gallery-header h2 {
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 16px;
             letter-spacing: -1px;
         }
-        #part3 .gallery-header p {
+
+        .gallery-header p {
             font-size: 1.2rem;
-            color: var(--gray);
+            color: #64748b;
             max-width: 600px;
             margin: 0 auto;
         }
-        #part3 .gallery-track {
+
+        .gallery-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .gallery-track {
             display: flex;
             gap: 24px;
-            animation: scroll 40s linear infinite;
             width: max-content;
+            touch-action: pan-y; /* Bu qator yangi */
+            pointer-events: auto; /* Bu qator yangi */
         }
-        #part3 .gallery-item-link {
+
+        .gallery-track.row-1 {
+            animation: scroll-right 40s linear infinite;
+        }
+
+        .gallery-track.row-2 {
+            animation: scroll-left 45s linear infinite;
+        }
+
+        .gallery-item-link {
             text-decoration: none;
             color: inherit;
+            display: block; /* Bu qator yangi */
+            pointer-events: auto; /* Bu qator yangi */
         }
-        #part3 .gallery-item {
+
+        .gallery-item {
             width: 400px;
             height: 280px;
             border-radius: 20px;
             overflow: hidden;
             position: relative;
             flex-shrink: 0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
             transition: transform 0.3s;
+            pointer-events: auto; /* Bu qator yangi */
+            cursor: pointer; /* Bu qator yangi */
         }
-        #part3 .gallery-item:hover {
+
+        .gallery-item:hover {
             transform: scale(1.05);
+            z-index: 10; /* Bu qator yangi */
         }
-        #part3 .gallery-item::after {
+
+        .gallery-item::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.4));
         }
-        #part3 .gallery-item img {
+
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        #part3 .gallery-overlay {
+
+        .gallery-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -244,20 +539,27 @@
             z-index: 1;
             color: white;
         }
-        #part3 .gallery-overlay h3 {
+
+        .gallery-overlay h3 {
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 6px;
         }
-        #part3 .gallery-overlay p {
+
+        .gallery-overlay p {
             font-size: 0.9rem;
             opacity: 0.9;
         }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
+
+        @keyframes scroll-right {
+            0%   { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        /* Advantages CSS */
+
+        @keyframes scroll-left {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }/* Advantages Section */
         #part4 .advantages-section {
             max-width: 1400px;
             margin: 0 auto;
@@ -342,7 +644,7 @@
             line-height: 1.7;
             font-weight: 400;
         }
-        /* Comparison CSS */
+        /* Comparison Section */
         #part5 .comparison-section {
             padding: 100px 0;
             background: #000;
@@ -467,7 +769,7 @@
         #part5 .label-after {
             right: 30px;
         }
-        /* Contact CSS */
+        /* Contact Section */
         #part6 .contact-section {
             background: white;
             padding: 100px 0;
@@ -530,436 +832,1449 @@
         #part6 .contact-item a:hover {
             text-decoration: underline;
         }
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Footer */
+        #part7 .footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
         }
+        #part7 .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        #part7 .footer-brand h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #part7 .footer-brand p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        #part7 .social-links {
+            display: flex;
+            gap: 12px;
+        }
+        #part7 .social-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        #part7 .social-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        #part7 .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        #part7 .footer-links ul {
+            list-style: none;
+        }
+        #part7 .footer-links li {
+            margin-bottom: 12px;
+        }
+        #part7 .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        #part7 .footer-links a:hover {
+            color: white;
+        }
+        #part7 .footer-contact h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        #part7 .footer-contact p {
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+        #part7 .footer-contact a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        #part7 .footer-contact a:hover {
+            color: white;
+        }
+        #part7 .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        /* Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
-        @keyframes ripple {
-            to { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+        /* Responsive for Header */
+        @media (max-width: 1200px) {
+            #part1 .logo img {
+                height: 45px;
+            }
+            #part1 .contact-info {
+                gap: 30px;
+            }
+            #part1 .nav-links {
+                gap: 28px;
+            }
         }
-        /* Responsive for Main Content */
+        @media (max-width: 1024px) {
+            #part1 .logo img {
+                height: 42px;
+            }
+            #part1 .contact-info {
+                gap: 25px;
+            }
+            #part1 .nav-links {
+                gap: 25px;
+            }
+            #part1 .nav-links a {
+                font-size: 0.9rem;
+            }
+            #part1 .top-nav-container {
+                padding: 0 30px;
+            }
+            #part1 .nav-container {
+                padding: 0 30px;
+            }
+        }
         @media (max-width: 968px) {
-            #part2 .carousel-title { font-size: 2.5rem; }
-            #part2 .carousel-subtitle { font-size: 1rem; padding: 0 20px; }
-            #part2 .carousel-buttons { flex-direction: column; gap: 15px; width: 80%; }
-            #part2 .btn { width: 100%; padding: 14px 30px; font-size: 1rem; }
+            body {
+                padding-top: 76px;
+            }
+            #part1 .nav-links, #part1 .bottom-navbar {
+                display: none;
+            }
+            #part1 .mobile-menu-btn {
+                display: flex;
+            }
+            #part1 .top-nav-container {
+                padding: 0 20px;
+                gap: 15px;
+            }
+            #part1 .top-navbar {
+                padding: 12px 0;
+            }
+            #part1 .contact-info .contact-item:not(.phone-item) {
+                display: none;
+            }
+            #part1 .logo img {
+                height: 52px !important;
+            }
+            #part1 .contact-info {
+                flex: 1;
+                justify-content: flex-end;
+            }
+            #part1 .mobile-menu-btn span {
+                width: 24px;
+                height: 2px;
+            }
+            #part1 .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            #part1 .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            #part1 .mobile-menu {
+                width: 85%;
+                padding: 20px;
+                gap: 60px;
+            }
+            #part1 .mobile-menu-links {
+                gap: 20px;
+                max-width: 280px;
+            }
+            #part1 .mobile-menu-links a {
+                font-size: 1.2rem;
+            }
+            #part1 .mobile-contact-info {
+                padding: 16px;
+                gap: 12px;
+                max-width: 280px;
+            }
+            #part1 .mobile-contact-info .contact-item {
+                font-size: 0.95rem;
+                gap: 10px;
+            }
+            #part1 .mobile-contact-info .contact-item i {
+                width: 18px;
+            }
         }
         @media (max-width: 768px) {
-            #part2 .section-header h2 { font-size: 2rem; }
-            #part4 .advantages-grid { grid-template-columns: 1fr; gap: 24px; }
-            #part4 .advantage-card { padding: 32px 24px; }
-            #part6 .contact-info { grid-template-columns: 1fr; gap: 30px; }
+            #part1 .logo img {
+                height: 50px !important;
+            }
+            #part1 .phone-number {
+                font-size: 0.95rem;
+            }
+            #part1 .mobile-menu {
+                width: 90%;
+                padding: 15px;
+                gap: 50px;
+            }
+            #part1 .mobile-menu-links {
+                gap: 18px;
+                max-width: 260px;
+            }
+            #part1 .mobile-menu-links a {
+                font-size: 1.15rem;
+            }
+            #part1 .mobile-contact-info {
+                padding: 14px;
+                gap: 10px;
+                max-width: 260px;
+            }
+            #part1 .mobile-contact-info .contact-item {
+                font-size: 0.9rem;
+                gap: 8px;
+            }
+            #part1 .mobile-contact-info .contact-item i {
+                width: 16px;
+            }
         }
         @media (max-width: 640px) {
-            #part2 .carousel-title { font-size: 2rem; }
-            #part2 .carousel-subtitle { font-size: 0.9rem; }
+            #part1 .top-navbar {
+                padding: 10px 0;
+            }
+            #part1 .top-nav-container {
+                padding: 0 15px;
+                gap: 10px;
+            }
+            #part1 .logo img {
+                height: 48px !important;
+            }
+            #part1 .phone-number {
+                font-size: 0.9rem;
+                letter-spacing: 0.3px;
+            }
+            #part1 .contact-item i {
+                font-size: 1rem;
+            }
+            #part1 .mobile-menu {
+                width: 100%;
+                padding: 10px;
+                gap: 40px;
+            }
+            #part1 .mobile-menu-links {
+                gap: 16px;
+                max-width: 240px;
+            }
+            #part1 .mobile-menu-links a {
+                font-size: 1.1rem;
+            }
+            #part1 .mobile-contact-info {
+                padding: 12px;
+                gap: 8px;
+                max-width: 240px;
+            }
+            #part1 .mobile-contact-info .contact-item {
+                font-size: 0.85rem;
+                gap: 8px;
+            }
+            #part1 .mobile-contact-info .contact-item i {
+                width: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            #part1 .logo img {
+                height: 46px !important;
+            }
+            #part1 .phone-number {
+                font-size: 0.85rem;
+            }
+            #part1 .contact-item i {
+                font-size: 0.95rem;
+            }
+            #part1 .mobile-menu {
+                padding: 8px;
+                gap: 30px;
+            }
+            #part1 .mobile-menu-links {
+                gap: 14px;
+                max-width: 220px;
+            }
+            #part1 .mobile-menu-links a {
+                font-size: 1.05rem;
+            }
+            #part1 .mobile-contact-info {
+                padding: 10px;
+                gap: 6px;
+                max-width: 220px;
+            }
+            #part1 .mobile-contact-info .contact-item {
+                font-size: 0.8rem;
+                gap: 6px;
+            }
+            #part1 .mobile-contact-info .contact-item i {
+                width: 14px;
+            }
+        }
+        @media (max-width: 380px) {
+            #part1 .logo img {
+                height: 44px !important;
+            }
+            #part1 .phone-number {
+                font-size: 0.8rem;
+            }
+            #part1 .contact-item i {
+                font-size: 0.9rem;
+            }
+            #part1 .mobile-menu {
+                padding: 6px;
+                gap: 25px;
+            }
+            #part1 .mobile-menu-links {
+                gap: 12px;
+                max-width: 200px;
+            }
+            #part1 .mobile-menu-links a {
+                font-size: 1rem;
+            }
+            #part1 .mobile-contact-info {
+                padding: 8px;
+                gap: 5px;
+                max-width: 200px;
+            }
+            #part1 .mobile-contact-info .contact-item {
+                font-size: 0.75rem;
+                gap: 5px;
+            }
+            #part1 .mobile-contact-info .contact-item i {
+                width: 12px;
+            }
+        }
+        /* Responsive for Main Content */
+        @media (max-width: 1200px) {
+            #part7 .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .carousel-logo { width: 140px; height: 140px; margin-bottom: 24px; }  /* ← YANGI! */
+            .carousel-title { font-size: 3rem; letter-spacing: 2px; }
+            .carousel-subtitle { font-size: 1.1rem; }
+            .carousel-buttons { flex-direction: column; width: 80%; }
+            .btn { width: 100%; padding: 16px; }
+        }
+
+        @media (max-width: 768px) {
+            #part2 .section-header h2 {
+                font-size: 2rem;
+            }
+            #part4 .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            #part4 .advantage-card {
+                padding: 32px 24px;
+            }
+            #part6 .contact-info {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        @media (max-width: 640px) {
+            .carousel-logo { width: 110px; height: 110px; margin-bottom: 20px; }  /* ← YANGI! */
+            #part2 .section-header h2 {
+                font-size: 2rem;
+            }
+            #part2 .carousel-title {
+                font-size: 2rem;
+            }
+            #part2 .carousel-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header yuklash joyi -->
-    <div id="header"></div>
-    
-    <!-- Asosiy kontent -->
-    <div id="content">
-        <!-- Part 2: Carousel Section -->
-        <div id="part2">
-            <div class="carousel-container" id="home">
-                <div class="carousel-background">
-                    <div class="carousel-image active">
-                        <img src="cimg/01.webp" alt="Tosh Gilam 1">
+    <!-- Part 1: Header (New Navbar) -->
+    <div id="part1">
+        <!-- Main Navbar Wrapper -->
+        <div class="navbar-wrapper" id="navbarWrapper">
+            <!-- Top Row - Logo, Phone, Contact -->
+            <div class="top-navbar">
+                <div class="top-nav-container">
+                    <div class="logo-container">
+                        <a href="index.html" class="logo">
+                            <img src="cimg/logo.png" alt="Toshgilam Logo">
+                        </a>
                     </div>
-                    <div class="carousel-image">
-                        <img src="cimg/02.webp" alt="Tosh Gilam 2">
+                   
+                    <div class="contact-info">
+                        <a href="tel:+998901234567" class="contact-item phone-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span class="phone-number">+998 (95) 626-00-00</span>
+                        </a>
+                        <a href="mailto:info@toshgilam.uz" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@toshgilam.uz</span>
+                        </a>
+                        <a href="aloqa.html" class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Toshkent, O'zbekiston</span>
+                        </a>
                     </div>
-                    <div class="carousel-image">
-                        <img src="cimg/03.webp" alt="Tosh Gilam 3">
-                    </div>
-                    <div class="carousel-image">
-                        <img src="cimg/04.webp" alt="Tosh Gilam 4">
-                    </div>
-                    <div class="carousel-image">
-                        <img src="cimg/05.webp" alt="Tosh Gilam 5">
-                    </div>
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
-                <div class="carousel-overlay"></div>
-                <div class="carousel-content">
-                    <h1 class="carousel-title">TOSH GILAM</h1>
-                    <p class="carousel-subtitle">Eng sifatli tosh gilam mahsulotlari siz uchun</p>
-                    <div class="carousel-buttons">
-                        <a href="mahsulotlar.html"><button class="btn btn-secondary">Mahsulotlar</button></a>
-                        <a href="order.html"><button class="btn btn-primary">Buyurtma berish</button></a>
+            </div>
+            <!-- Bottom Row - Categories/Navigation -->
+            <div class="bottom-navbar">
+                <div class="nav-container">
+                    <div class="nav-links">
+                        <a href="mahsulotlar.html">Mahsulotlar</a>
+                        <a href="bizhaqimizda.html">Biz haqimizda</a>
+                        <a href="galereya.html">Galereya</a>
+                        <a href="aloqa.html">Aloqa</a>
+                        <a href="bizning_qilgan_ishlar.html">Biz qilgan ishlar</a>
+                        <a href="order.html">Buyurtma berish</a>
                     </div>
-                </div>
-                <div class="carousel-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
                 </div>
             </div>
         </div>
-
-        <!-- Part 3: Scrolling Gallery -->
-        <div id="part3">
-            <section class="scrolling-gallery">
-                <div class="gallery-header">
-                    <h2>Bizning toshgilamlar galereyasi</h2>
-                    <p>bu materiallar mustahkam, estetik va uzoq muddatli, chidamli</p>
-                </div>
-                <div class="gallery-track">
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g01.webp" alt="">
-                            <div class="gallery-overlay">
-                                <h3>Shabnam</h3>
-                                <p>ertalab shabnamday tiniq</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g02.webp" alt="Tech">
-                            <div class="gallery-overlay">
-                                <h3>Temuriy</h3>
-                                <p>aralash rangdagi silliq yuvilgan toshlar </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g03.webp" alt="Food">
-                            <div class="gallery-overlay">
-                                <h3>Oytog'</h3>
-                                <p>tabiatning mutanosib va sokin go'zalligi</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g04.webp" alt="Travel">
-                            <div class="gallery-overlay">
-                                <h3>Kohinur</h3>
-                                <p>juda mayda va silliqlangan toshlar</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g05.webp" alt="Interior">
-                            <div class="gallery-overlay">
-                                <h3>Zarnigor</h3>
-                                <p>tabiiy toshlar va oq kristal uyg'unligi</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g06.webp" alt="Store">
-                            <div class="gallery-overlay">
-                                <h3>Safonur</h3>
-                                <p>nafislik va kontrastninig uyg'unligi</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g07.webp" alt="Tech">
-                            <div class="gallery-overlay">
-                                <h3>Suvoriy</h3>
-                                <p>tabiatda yaralgan noziklik</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="galereya.html" class="gallery-item-link">
-                        <div class="gallery-item">
-                            <img src="gimg/g08.webp" alt="Food">
-                            <div class="gallery-overlay">
-                                <h3>Safir</h3>
-                                <p>tabiiy iliqlik va ranglar uyg'unligi</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </section>
-        </div>
-
-        <!-- Part 4: Advantages Section -->
-        <div id="part4">
-            <section class="advantages-section">
-                <div class="section-header">
-                    <h2>Bizning afzalliklarimiz</h2>
-                    <p>Tosh gilam mahsulotlarimiz nima uchun eng yaxshi tanlov ekanligi haqida</p>
-                </div>
-                <div class="advantages-grid">
-                    <div class="advantage-card">
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                            </svg>
-                        </div>
-                        <h3>Tabiiy materiallar</h3>
-                        <p>100% tabiiy tosh va ekologik toza materiallardan tayyorlangan. Sizning salomatligingiz va atrof-muhit uchun xavfsiz.</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                        </div>
-                        <h3>Chidamlilik</h3>
-                        <p>Namlik, issiqlik va mexanik ta'sirlarga bardoshli.</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Kafolat</h3>
-                        <p>7 yildan 15 yilgacha.</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path>
-                            </svg>
-                        </div>
-                        <h3>Zamonaviy dizayn</h3>
-                        <p>Har bir mahsulot noyob va eksklyuziv dizaynga ega. Har qanday interyerga mos keluvchi ranglar va naqshlar.</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                            </svg>
-                        </div>
-                        <h3>Professional o'rnatish</h3>
-                        <p>Tajribali mutaxassislar tomonidan sifatli o'rnatish xizmati. Tez va mukammal bajariladigan ish kafolati.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Part 5: Comparison Section -->
-        <div id="part5">
-            <section class="comparison-section">
-                <div class="comparison-header">
-                    <h2>Oldin va Keyin</h2>
-                    <p>Tosh gilam o'rnatishdan oldin va keyin taqqoslash. Farqni o'zingiz ko'ring!</p>
-                </div>
-                <div class="comparison-container" id="comparisonContainer">
-                    <div class="image-wrapper before-image">
-                        <img src="https://ik.imagekit.io/kwnpz8tu8/pic/oldin.jpg?updatedAt=1762862641438" alt="Oldin">
-                    </div>
-                    <div class="image-wrapper after-image" id="afterImage">
-                        <img src="https://ik.imagekit.io/kwnpz8tu8/pic/keyin.jpg?updatedAt=1762862626258" alt="Keyin">
-                    </div>
-                    <div class="slider" id="slider">
-                        <div class="slider-button"></div>
-                    </div>
-                    <div class="label label-before">OLDIN</div>
-                    <div class="label label-after">KEYIN</div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Part 6: Contact Section -->
-        <div id="part6">
-            <section class="contact-section">
-                <div class="contact-container">
-                    <div class="contact-header">
-                        <h2>Biz bilan aloqa</h2>
-                        <p>Biz bilan bog'laning va buyurtma bering</p>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                            <h3>Telefon raqam</h3>
-                            <p><a href="tel:+998901234567">+998 90 123 45 67</a></p>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <h3>Gmail</h3>
-                            <p><a href="mailto:info@toshgilam.uz">info@toshgilam.uz</a></p>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <h3>Joylashuv</h3>
-                            <p>Toshkent sh., Chilanzor tumani, 1-uy</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-links">
+                <a href="index.html">Bosh sahifa</a>
+                <a href="mahsulotlar.html">Mahsulotlar</a>
+                <a href="bizhaqimizda.html">Biz haqimizda</a>
+                <a href="galereya.html">Galereya</a>
+                <a href="aloqa.html">Aloqa</a>
+                <a href="bizning_qilgan_ishlar.html">Biz qilgan ishlar</a>
+                <a href="order.html">Buyurtma berish</a>
+            </div>
+            <div class="mobile-contact-info">
+                <a href="tel:+998901234567" class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="phone-number">+998 (95) 626-00-00</span>
+                </a></br>
+                <a href="mailto:info@toshgilam.uz" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@toshgilam.uz</span>
+                </a></br>
+                <a href="aloqa.html" class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Toshkent, O'zbekiston</span>
+                </a>
+            </div>
         </div>
     </div>
-    
-    <!-- Footer yuklash joyi -->
-    <div id="footer"></div>
+
+    <!-- Part 2: Carousel Section -->
+    <div id="part2">
+        <div class="carousel-container" id="home">
+            <div class="carousel-background">
+                <div class="carousel-image active">
+                    <img src="cimg/01.webp" alt="Tosh Gilam 1">
+                </div>
+                <div class="carousel-image">
+                    <img src="cimg/02.webp" alt="Tosh Gilam 2">
+                </div>
+                <div class="carousel-image">
+                    <img src="cimg/03.webp" alt="Tosh Gilam 3">
+                </div>
+                <div class="carousel-image">
+                    <img src="cimg/04.webp" alt="Tosh Gilam 4">
+                </div>
+              
+                <div class="carousel-image">
+                    <img src="cimg/05.webp" alt="Tosh Gilam 4">
+                </div>
+            </div>
+
+            <div class="carousel-overlay"></div>
+            <div class="carousel-content">
+                <h1 class="carousel-title">TOSH GILAM</h1>
+                <img src="cimg/logo.png" alt="Tosh Gilam Logo" class="carousel-logo">  <!-- ← YANGI QATOR! -->
+                <p class="carousel-subtitle">Eng sifatli tosh gilam mahsulotlari siz uchun</p>
+                <div class="carousel-buttons">
+                    <a href="mahsulotlar.html"><button class="btn btn-secondary">Mahsulotlar</button></a>
+                    <a href="order.html"><button class="btn btn-primary">Buyurtma berish</button></a>
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
+ <!-- ========== GALLERY SECTION ========== -->
+<section class="scrolling-gallery">
+    <div class="gallery-header">
+        <h2>Bizning mahsulotlar</h2>
+        <p>bu materiallar mustahkam, estetik va uzoq muddatli, chidamli</p>
+    </div>
+
+    <div class="gallery-rows">
+        <!-- Birinchi qator: O'ngdan chapga -->
+        <div class="gallery-track row-1" id="track1">
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/shabnam02.webp?updatedAt=1760467034588" alt="Shabnam">
+                    <div class="gallery-overlay">
+                        <h3>Shabnam</h3>
+                        <p>ertalab shabnamday tiniq</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/temuriy02.webp?updatedAt=1760467034640" alt="Temuriy">
+                    <div class="gallery-overlay">
+                        <h3>Temuriy</h3>
+                        <p>aralash rangdagi silliq yuvilgan toshlar</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/oytog02.webp?updatedAt=1760467034872" alt="Oytog'">
+                    <div class="gallery-overlay">
+                        <h3>Oytog'</h3>
+                        <p>tabiatning mutanosib va sokin go'zalligi</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kohinur02.webp?updatedAt=1760467034847" alt="Kohinur">
+                    <div class="gallery-overlay">
+                        <h3>Kohinur</h3>
+                        <p>juda mayda va silliqlangan toshlar</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="tezkorquiz.uz" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/zarnigor02.webp?updatedAt=1760467035558" alt="Zarnigor">
+                    <div class="gallery-overlay">
+                        <h3>Zarnigor</h3>
+                        <p>tabiiy toshlar va oq kristal uyg'unligi</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/safonur02.webp?updatedAt=1760467034062" alt="Safonur">
+                    <div class="gallery-overlay">
+                        <h3>Safonur</h3>
+                        <p>nafislik va kontrastninig uyg'unligi</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/suvoriy02.webp?updatedAt=1760467035321" alt="Suvoriy">
+                    <div class="gallery-overlay">
+                        <h3>Suvoriy</h3>
+                        <p>tabiatda yaralgan noziklik</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/safir02.webp?updatedAt=1760467035332" alt="Safir">
+                    <div class="gallery-overlay">
+                        <h3>Safir</h3>
+                        <p>tabiiy iliqlik va ranglar uyg'unligi</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Ikkinchi qator: Chapdan o'ngga -->
+        <div class="gallery-track row-2" id="track2">
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/mohisa01.webp?updatedAt=1762446078660" alt="Marjon">
+                    <div class="gallery-overlay">
+                        <h3>Marjon</h3>
+                        <!-- <p>dengiz tubidagi go'zallik</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/kohakon02.webp?updatedAt=1762446078985" alt="Lolazor">
+                    <div class="gallery-overlay">
+                        <h3>Kohakon</h3>
+                        <!-- <p>bahor ranglarining jamlanishi</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/joshqin01.webp?updatedAt=1762446061194" alt="Oftob">
+                    <div class="gallery-overlay">
+                        <h3>Jo'shqin</h3>
+                        <!-- <p>quyosh nuridek yorqin va issiq</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/hayrat01.webp?updatedAt=1762446049250" alt="Guliston">
+                    <div class="gallery-overlay">
+                        <h3>Hayrat</h3>
+                        <!-- <p>gullar bog'idagi rang-baranglik</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/barkamol03.webp?updatedAt=1762446043356" alt="Shohona">
+                    <div class="gallery-overlay">
+                        <h3>Barkamol</h3>
+                        <!-- <p>saroy me'morchiligining nafosligi</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/orasta02.webp?updatedAt=1762445988899" alt="Yulduz">
+                    <div class="gallery-overlay">
+                        <h3>Orasta</h3>
+                        <!-- <p>osmon yulduzlaridek charaqlab turuvchi</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/nazm01.webp?updatedAt=1762446063188" alt="Bahor">
+                    <div class="gallery-overlay">
+                        <h3>Nazm</h3>
+                        <!-- <p>yangilanish va hayot taravati</p> -->
+                    </div>
+                </div>
+            </a>
+
+            <a href="mahsulotlar.html" class="gallery-item-link">
+                <div class="gallery-item">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/kategoriya/mohisa02.webp?updatedAt=1762446078885" alt="Marifat">
+                    <div class="gallery-overlay">
+                        <h3>Mohisa</h3>
+                        <!-- <p>bilim va madaniyat uyg'unligi</p> -->
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Part 4: Advantages Section -->
+    <div id="part4">
+        <section class="advantages-section">
+            <div class="section-header">
+                <h2>Bizning afzalliklarimiz</h2>
+                <p>Tosh gilam mahsulotlarimiz nima uchun eng yaxshi tanlov ekanligi haqida</p>
+            </div>
+          
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Tabiiy materiallar</h3>
+                    <p>100% tabiiy tosh va ekologik toza materiallardan tayyorlangan. Sizning salomatligingiz va atrof-muhit uchun xavfsiz.</p>
+                </div>
+              
+                <div class="advantage-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Chidamlilik</h3>
+                    <p>Namlik, issiqlik va mexanik ta'sirlarga bardoshli.</p>
+                </div>
+              
+                <div class="advantage-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Kafolat</h3>
+                    <p>7 yildan 15 yilgacha.</p>
+                </div>
+              
+                <div class="advantage-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path>
+                        </svg>
+                    </div>
+                    <h3>Zamonaviy dizayn</h3>
+                    <p>Har bir mahsulot noyob va eksklyuziv dizaynga ega. Har qanday interyerga mos keluvchi ranglar va naqshlar.</p>
+                </div>
+              
+                <div class="advantage-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                    </div>
+                    <h3>Professional o'rnatish</h3>
+                    <p>Tajribali mutaxassislar tomonidan sifatli o'rnatish xizmati. Tez va mukammal bajariladigan ish kafolati.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Part 5: Comparison Section -->
+    <div id="part5">
+        <section class="comparison-section">
+            <div class="comparison-header">
+                <h2>Oldin va Keyin</h2>
+                <p>Tosh gilam o'rnatishdan oldin va keyin taqqoslash. </br> Farqni o'zingiz ko'ring!</p>
+            </div>
+            <div class="comparison-container" id="comparisonContainer">
+                <div class="image-wrapper before-image">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/pic/oldin.jpg?updatedAt=1762862641438" alt="Oldin">
+                </div>
+              
+                <div class="image-wrapper after-image" id="afterImage">
+                    <img src="https://ik.imagekit.io/kwnpz8tu8/pic/keyin.jpg?updatedAt=1762862626258" alt="Keyin">
+                </div>
+              
+                <div class="slider" id="slider">
+                    <div class="slider-button"></div>
+                </div>
+              
+                <div class="label label-before">OLDIN</div>
+                <div class="label label-after">KEYIN</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Part 6: Contact Section -->
+    <div id="part6">
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h2>Biz bilan aloqa</h2>
+                    <p>Biz bilan bog'laning va buyurtma bering</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <h3>Telefon raqam</h3>
+                        <p><a href="tel:+998901234567">+998 95 626 00 00</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <h3>Gmail</h3>
+                        <p><a href="mailto:info@toshgilam.uz">info@toshgilam.uz</a></p>
+                    </div>
+                <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3>Joylashuv</h3>
+                        <p>Toshkent sh., Chirchiq </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Part 7: Footer -->
+    <div id="part7">
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Toshgilam</h3>
+                    <p>
+                        Eng sifatli va zamonaviy tosh gilam mahsulotlari siz uchun
+                    </p>
+                  
+                </div>
+                <div class="footer-links">
+                     <div class="social-links">
+                        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/tosh.gilam" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/ToshGilam_uz" class="social-btn"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.youtube.com/@TOSHGILAM" class="social-btn"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Kompaniya</h4>
+                    <ul>
+                        <li><a href="bizhaqimizda.html">Biz haqimizda</a></li>
+                        <li><a href="aloqa.html">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Biz bilan aloqa</h4>
+                    <p>Telefon: <a href="tel:+998901234567">+998 95 626 00 00</a></p>
+                    <p>Email: <a href="mailto:info@toshgilam.uz">info@toshgilam.uz</a></p>
+                    <p>Manzil: Toshkent sh., Chirchiq, X. Maqsudov</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Toshgilam. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </footer>
+    </div>
 
     <script>
-        // Header va Footer yuklash funksiyasi
-        async function loadLayout(id, file) {
-            try {
-                const response = await fetch(file);
-                if (!response.ok) throw new Error(`Fayl yuklashda xato: ${file}`);
-                const html = await response.text();
-                document.getElementById(id).innerHTML = html;
-            } catch (error) {
-                console.error(error);
-                document.getElementById(id).innerHTML = '<p>Xato: Fayl yuklanmadi</p>';
-            }
-        }
-
-        // Yuklashni ishga tushirish
-        loadLayout("header", "header.html");
-        loadLayout("footer", "footer.html");
-
-        // Umumiy JS (carousel, comparison slider, button ripple va hokazo)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Carousel JS
-            const images = document.querySelectorAll('.carousel-image');
-            const dots = document.querySelectorAll('.dot');
-            let currentIndex = 0;
-            let zoomStartTime = Date.now();
-            const ZOOM_DURATION = 8000;
-            const MIN_SCALE = 1;
-            const MAX_SCALE = 1.15;
-            function getCurrentScale() {
-                const elapsed = Date.now() - zoomStartTime;
-                const progress = Math.min(elapsed / ZOOM_DURATION, 1);
-                return MIN_SCALE + (MAX_SCALE - MIN_SCALE) * progress;
-            }
-            function animateZoom() {
-                const currentScale = getCurrentScale();
-                const activeImage = images[currentIndex].querySelector('img');
-                if (activeImage) {
-                    activeImage.style.transform = `scale(${currentScale})`;
-                }
-                requestAnimationFrame(animateZoom);
-            }
-            function showImage(index) {
-                const currentScale = getCurrentScale();
-                images.forEach((img, i) => {
-                    const imgElement = img.querySelector('img');
-                    if (i === index) {
-                        imgElement.style.transform = `scale(${currentScale})`;
-                        img.classList.add('active');
-                    } else {
-                        imgElement.style.transform = `scale(${currentScale})`;
-                        img.classList.remove('active');
-                    }
-                });
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[index].classList.add('active');
-                currentIndex = index;
-                zoomStartTime = Date.now() - (currentScale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE) * ZOOM_DURATION;
-            }
-            function nextImage() {
-                const nextIndex = (currentIndex + 1) % images.length;
-                showImage(nextIndex);
-            }
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => showImage(index));
-            });
-            animateZoom();
-            setInterval(nextImage, 8000);
-
-            // Button ripple effect
-            document.querySelectorAll('button').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    ripple.style.cssText = `
-                        position: absolute;
-                        width: 100px;
-                        height: 100px;
-                        background: rgba(255, 255, 255, 0.6);
-                        border-radius: 50%;
-                        transform: translate(-50%, -50%) scale(0);
-                        animation: ripple 0.6s ease-out;
-                        pointer-events: none;
-                        left: ${x}px;
-                        top: ${y}px;
-                    `;
-                    this.style.position = 'relative';
-                    this.style.overflow = 'hidden';
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-            });
-
-            // Comparison Slider JS
-            const comparisonContainer = document.getElementById('comparisonContainer');
-            const slider = document.getElementById('slider');
-            const afterImage = document.getElementById('afterImage');
-            let isDragging = false;
-            function updateSliderPosition(x) {
-                const rect = comparisonContainer.getBoundingClientRect();
-                const containerWidth = rect.width;
-                const offsetX = x - rect.left;
-                let percentage = (offsetX / containerWidth) * 100;
-                percentage = Math.max(0, Math.min(100, percentage));
-                slider.style.left = percentage + '%';
-                afterImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
-            }
-            function handleMove(e) {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                updateSliderPosition(x);
-            }
-            function startDrag(e) {
-                isDragging = true;
-                comparisonContainer.style.cursor = 'col-resize';
-                const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-                updateSliderPosition(x);
-            }
-            function stopDrag() {
-                isDragging = false;
-                comparisonContainer.style.cursor = 'default';
-            }
-            if (slider) {
-                slider.addEventListener('mousedown', startDrag);
-                slider.addEventListener('touchstart', startDrag, { passive: false });
-            }
-            document.addEventListener('mousemove', handleMove);
-            document.addEventListener('touchmove', handleMove, { passive: false });
-            document.addEventListener('mouseup', stopDrag);
-            document.addEventListener('touchend', stopDrag);
-
-            // Intersection Observer for animations
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.advantage-card, .carousel-content').forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-                observer.observe(card);
+        // Header Scripts
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navbarWrapper = document.getElementById('navbarWrapper');
+       
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            navbarWrapper.classList.toggle('menu-open');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                navbarWrapper.classList.remove('menu-open');
+                document.body.style.overflow = '';
             });
         });
+        // Navbar show/hide on scroll
+        let lastScrollTop = 0;
+        let scrollTimer = null;
+        window.addEventListener('scroll', () => {
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+           
+            if (scrollTimer !== null) {
+                clearTimeout(scrollTimer);
+            }
+           
+            if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
+                navbarWrapper.classList.add('hidden');
+            } else {
+                navbarWrapper.classList.remove('hidden');
+            }
+           
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+           
+            scrollTimer = setTimeout(() => {
+                scrollTimer = null;
+            }, 100);
+        }, { passive: true });
+        // Close mobile menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 968) {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                navbarWrapper.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Main Content Scripts (from previous)
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.gallery-card, .category-card, .advantage-card, .carousel-content').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+        // Button click effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+              
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                    left: ${x}px;
+                    top: ${y}px;
+                `;
+              
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+              
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+        // Carousel functionality
+        const images = document.querySelectorAll('.carousel-image');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        let zoomStartTime = Date.now();
+        const ZOOM_DURATION = 8000;
+        const MIN_SCALE = 1;
+        const MAX_SCALE = 1.15;
+        function getCurrentScale() {
+            const elapsed = Date.now() - zoomStartTime;
+            const progress = Math.min(elapsed / ZOOM_DURATION, 1);
+            return MIN_SCALE + (MAX_SCALE - MIN_SCALE) * progress;
+        }
+        function animateZoom() {
+            const currentScale = getCurrentScale();
+            const activeImage = images[currentIndex].querySelector('img');
+            if (activeImage) {
+                activeImage.style.transform = `scale(${currentScale})`;
+            }
+            requestAnimationFrame(animateZoom);
+        }
+        function showImage(index) {
+            const currentScale = getCurrentScale();
+          
+            images.forEach((img, i) => {
+                const imgElement = img.querySelector('img');
+                if (i === index) {
+                    imgElement.style.transform = `scale(${currentScale})`;
+                    img.classList.add('active');
+                } else {
+                    imgElement.style.transform = `scale(${currentScale})`;
+                    img.classList.remove('active');
+                }
+            });
+          
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+          
+            currentIndex = index;
+            zoomStartTime = Date.now() - (currentScale - MIN_SCALE) / (MAX_SCALE - MIN_SCALE) * ZOOM_DURATION;
+        }
+        function nextImage() {
+            const nextIndex = (currentIndex + 1) % images.length;
+            showImage(nextIndex);
+        }
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showImage(index);
+            });
+        });
+        animateZoom();
+        setInterval(nextImage, 8000);
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: translate(-50%, -50%) scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        // Slider initialization for product cards (if any)
+        function initSlider(card) {
+            const container = card.querySelector('.slider-container');
+            const images = card.querySelectorAll('.slider-image');
+            const dotsContainer = card.querySelector('.slider-dots');
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
+            if (card.dataset.id === 'camera1') {
+                dotsContainer.style.display = 'none';
+                return;
+            }
+            images.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+            const dots = dotsContainer.querySelectorAll('.slider-dot');
+            function goToSlide(index) {
+                currentIndex = index;
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((d, i) => {
+                    d.classList.toggle('active', i === currentIndex);
+                });
+            }
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % images.length;
+                goToSlide(currentIndex);
+            }
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                goToSlide(currentIndex);
+            }
+            container.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                e.preventDefault();
+            }, { passive: false });
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            }, { passive: false });
+            container.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+                isDragging = false;
+            });
+            container.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                isDragging = true;
+                e.preventDefault();
+            });
+            container.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+            container.addEventListener('mouseup', (e) => {
+                if (!isDragging) return;
+                const endX = e.clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+                isDragging = false;
+            });
+            container.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+            container.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const allCards = document.querySelectorAll('.product-card');
+            allCards.forEach(card => initSlider(card));
+        });
+        // Button click ripple effect for product buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('product-btn')) {
+                const button = e.target;
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+              
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                    left: ${x}px;
+                    top: ${y}px;
+                `;
+              
+                button.style.position = 'relative';
+                button.style.overflow = 'hidden';
+                button.appendChild(ripple);
+              
+                setTimeout(() => ripple.remove(), 600);
+            }
+        });
+        // Comparison Slider Script
+        const comparisonContainer = document.getElementById('comparisonContainer');
+        const slider = document.getElementById('slider');
+        const afterImage = document.getElementById('afterImage');
+      
+        let isDragging = false;
+        function updateSliderPosition(x) {
+            const rect = comparisonContainer.getBoundingClientRect();
+            const containerWidth = rect.width;
+            const offsetX = x - rect.left;
+          
+            let percentage = (offsetX / containerWidth) * 100;
+            percentage = Math.max(0, Math.min(100, percentage));
+          
+            slider.style.left = percentage + '%';
+            afterImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+        }
+        function handleMove(e) {
+            if (!isDragging) return;
+          
+            e.preventDefault();
+            const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            updateSliderPosition(x);
+        }
+        function startDrag(e) {
+            isDragging = true;
+            comparisonContainer.style.cursor = 'col-resize';
+          
+            const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            updateSliderPosition(x);
+        }
+        function stopDrag() {
+            isDragging = false;
+            comparisonContainer.style.cursor = 'default';
+        }
+        slider.addEventListener('mousedown', startDrag);
+        slider.addEventListener('touchstart', startDrag, { passive: false });
+      
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('touchmove', handleMove, { passive: false });
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
     </script>
+
+  <script>
+(function () {
+  // Birinchi qator uchun
+  const track1 = document.getElementById('track1');
+  if (track1) initGallery(track1, 60, 'right');
+
+  // Ikkinchi qator uchun
+  const track2 = document.getElementById('track2');
+  if (track2) initGallery(track2, 50, 'left');
+
+  function initGallery(track, speed, direction) {
+    let isPaused = false;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartPos = 0;
+    let position = 0;
+    let lastTime = null;
+
+    // Clone items for infinite scroll
+    const items = Array.from(track.children);
+    if (items.length === 0) return;
+
+    items.forEach(node => {
+      const clone = node.cloneNode(true);
+      track.appendChild(clone);
+    });
+
+    let sequenceWidth = calcSequenceWidth();
+
+    function calcSequenceWidth() {
+      const origNodes = Array.from(track.children).slice(0, items.length);
+      return origNodes.reduce((w, n) => w + n.getBoundingClientRect().width + getGap(), 0);
+    }
+
+    function getGap() {
+      const style = getComputedStyle(track);
+      const g = parseFloat(style.gap || style.columnGap || 24);
+      return isNaN(g) ? 24 : g;
+    }
+
+    function ensureDimensionsReady() {
+      sequenceWidth = calcSequenceWidth();
+      if (sequenceWidth === 0 || !isFinite(sequenceWidth)) {
+        const imgs = track.querySelectorAll('img');
+        let remaining = imgs.length;
+        if (remaining === 0) {
+          sequenceWidth = calcSequenceWidth();
+          return;
+        }
+        imgs.forEach(img => {
+          if (img.complete) {
+            remaining--;
+          } else {
+            img.addEventListener('load', () => {
+              remaining--;
+              if (remaining === 0) {
+                sequenceWidth = calcSequenceWidth();
+              }
+            }, { once: true });
+            img.addEventListener('error', () => {
+              remaining--;
+              if (remaining === 0) {
+                sequenceWidth = calcSequenceWidth();
+              }
+            }, { once: true });
+          }
+        });
+      }
+    }
+
+    ensureDimensionsReady();
+
+    function step(timestamp) {
+      if (lastTime === null) lastTime = timestamp;
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      if (!isPaused && !isDragging) {
+        if (direction === 'right') {
+          position += speed * dt;
+        } else {
+          position -= speed * dt;
+        }
+        if (sequenceWidth > 0) {
+          position = ((position % sequenceWidth) + sequenceWidth) % sequenceWidth;
+        }
+      }
+
+      track.style.transform = `translateX(${-position}px)`;
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+    
+    // Hover holatini reset qilish
+    const allItems = track.querySelectorAll('.gallery-item');
+    allItems.forEach(item => {
+        item.addEventListener('mouseenter', function(e) {
+            if (isDragging) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+        
+        item.addEventListener('click', function(e) {
+            if (isDragging || Math.abs(position - dragStartPos) > 5) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+    });
+    
+    track.addEventListener('mouseenter', () => isPaused = true);
+    track.addEventListener('mouseleave', () => isPaused = false);
+    track.addEventListener('focusin', () => isPaused = true);
+    track.addEventListener('focusout', () => isPaused = false);
+
+    track.addEventListener('mousedown', startDrag, { passive: false });
+    track.addEventListener('touchstart', startDrag, { passive: false });
+
+    function startDrag(e) {
+      // Agar vertikal scroll bo'lsa, drag-ni boshlamaymiz
+      if (e.type === 'touchstart') {
+          const touch = e.touches[0];
+          track.dataset.startY = touch.clientY;
+          track.dataset.startX = touch.clientX;
+          track.dataset.hasMoved = 'false';
+          
+          // Agar link ustida bosgan bo'lsa
+          if (e.target.closest('.gallery-item-link')) {
+              track.dataset.clickedOnLink = 'true';
+          }
+          return;
+      }
+      
+      // Agar link ustida bosgan bo'lsa
+      if (e.target.closest('.gallery-item-link')) {
+          track.dataset.clickedOnLink = 'true';
+      }
+      
+      isDragging = true;
+      isPaused = true;
+      lastTime = null;
+      dragStartX = (e.touches ? e.touches[0].clientX : e.clientX);
+      dragStartPos = position;
+      track.dataset.hasMoved = 'false';
+
+      document.addEventListener('mousemove', onDrag, { passive: false });
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchmove', onDrag, { passive: false });
+      document.addEventListener('touchend', endDrag, { passive: false });
+      document.addEventListener('touchcancel', endDrag, { passive: false });
+    }
+
+    function onDrag(e) {
+      if (e.type === 'touchmove' && !isDragging) {
+          const touch = e.touches[0];
+          const deltaX = Math.abs(touch.clientX - parseFloat(track.dataset.startX || 0));
+          const deltaY = Math.abs(touch.clientY - parseFloat(track.dataset.startY || 0));
+          
+          // Agar vertikal harakat ko'proq bo'lsa, drag qilmaymiz
+          if (deltaY > deltaX) {
+              return;
+          }
+          
+          // Gorizontal harakat - drag boshlaymiz
+          isDragging = true;
+          isPaused = true;
+          lastTime = null;
+          dragStartX = parseFloat(track.dataset.startX);
+          dragStartPos = position;
+          e.preventDefault();
+      }
+      
+      if (!isDragging) return;
+      e.preventDefault();
+      
+      track.dataset.hasMoved = 'true';
+      
+      const clientX = (e.touches ? e.touches[0].clientX : e.clientX);
+      const dx = clientX - dragStartX;
+      position = dragStartPos - dx;
+      if (sequenceWidth > 0) {
+          position = ((position % sequenceWidth) + sequenceWidth) % sequenceWidth;
+      }
+    }
+
+    // BU YANGI FUNKSIYA - endDrag
+    function endDrag(e) {
+      if (!isDragging && e.type !== 'touchend') return;
+      
+      const clientX = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
+      const dx = Math.abs(clientX - dragStartX);
+      
+      // Agar 5px dan kam siljigan bo'lsa, bu click hisoblanadi
+      if (dx < 5 && track.dataset.hasMoved !== 'true') {
+          // Link ishlashiga ruxsat berish
+          isDragging = false;
+          isPaused = false;
+          track.dataset.clickedOnLink = 'false';
+          track.dataset.hasMoved = 'false';
+          
+          document.removeEventListener('mousemove', onDrag);
+          document.removeEventListener('mouseup', endDrag);
+          document.removeEventListener('touchmove', onDrag);
+          document.removeEventListener('touchend', endDrag);
+          document.removeEventListener('touchcancel', endDrag);
+          return; // preventDefault qilmaymiz - link ishlasin
+      }
+      
+      // Agar drag bo'lgan bo'lsa
+      e.preventDefault();
+      isDragging = false;
+      isPaused = false;
+      track.dataset.clickedOnLink = 'false';
+      track.dataset.hasMoved = 'false';
+
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('mouseup', endDrag);
+      document.removeEventListener('touchmove', onDrag);
+      document.removeEventListener('touchend', endDrag);
+      document.removeEventListener('touchcancel', endDrag);
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        ensureDimensionsReady();
+        if (sequenceWidth > 0) position = position % sequenceWidth;
+      }, 150);
+    });
+
+    track.style.willChange = 'transform';
+    track.style.transform = 'translateX(0px)';
+  }
+})();
+</script>
 </body>
 </html>
